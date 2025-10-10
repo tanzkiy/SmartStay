@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/SmartStay/static/css/main.1fe701c3.css",
-    "main.js": "/SmartStay/static/js/main.3c173b60.js",
+    "main.js": "/SmartStay/static/js/main.6296cf33.js",
     "service-worker.js": "/SmartStay/service-worker.js",
     "index.html": "/SmartStay/index.html",
     "main.1fe701c3.css.map": "/SmartStay/static/css/main.1fe701c3.css.map",
-    "main.3c173b60.js.map": "/SmartStay/static/js/main.3c173b60.js.map"
+    "main.6296cf33.js.map": "/SmartStay/static/js/main.6296cf33.js.map"
   },
   "entrypoints": [
     "static/css/main.1fe701c3.css",
-    "static/js/main.3c173b60.js"
+    "static/js/main.6296cf33.js"
   ]
 }
