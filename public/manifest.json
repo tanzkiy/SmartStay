@@ -21,7 +21,8 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/SmartStay/",
+  "scope": "/SmartStay/",
   "display": "standalone",
   "theme_color": "#2D6A4F",
   "background_color": "#ffffff"
