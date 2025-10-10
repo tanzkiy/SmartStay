@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Sun, Moon, Menu, X, Download, Contrast, Globe, LogOut } from 'lucide-react';
+import logo from '../../default(1)(1).png'; // Import your logo
 
 const Header = ({ darkMode, toggleDarkMode, highContrast, toggleHighContrast, language, changeLanguage, showInstallPrompt, handleInstallClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,7 +44,8 @@ const Header = ({ darkMode, toggleDarkMode, highContrast, toggleHighContrast, la
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-mountain-green dark:text-white font-extrabold tracking-tight text-xl md:text-2xl">
+            <img src={logo} alt="SmartStay Logo" className="h-10 w-auto mr-0 pr-0" />
+            <span className="text-mountain-green dark:text-white font-extrabold tracking-tight text-xl ml-0 pl-0 md:text-2xl">
               SmartStay<span className="text-mountain-green-light"> </span>
             </span>
           </Link>
