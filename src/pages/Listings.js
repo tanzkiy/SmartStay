@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ArrowUpDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUpDown, ChevronLeft, ChevronRight, Filter } from 'lucide-react';
 import FilterSidebar from '../components/listings/FilterSidebar';
 import PropertyCard from '../components/common/PropertyCard';
 import { mockListings } from '../data/mockData';
@@ -10,6 +10,7 @@ const Listings = () => {
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOption, setSortOption] = useState('recommended');
+  const [showFilterModal, setShowFilterModal] = useState(false); // State for filter modal
   const listingsPerPage = 8;
   
   // Initialize filters from URL parameters
@@ -135,16 +136,71 @@ const Listings = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <motion.h1 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-3xl font-bold text-gray-800 dark:text-white mb-8"
-      >
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center"
+        >
         Available Properties in Baguio City
       </motion.h1>
       
-      <div className="flex flex-col lg:flex-row gap-6">
-        {/* Sidebar Filters */}
-        <div className="lg:w-1/4">
+      {/* Filter Button for small screens */}
+      <div className="lg:hidden fixed top-48 right-4 z-50">
+        <button
+          onClick={() => setShowFilterModal(true)}
+          className="flex items-center p-3 bg-mountain-green text-white rounded-full shadow-lg hover:bg-mountain-green-light transition-colors space-x-2"
+          aria-label="Show Filters"
+        >
+          <Filter size={24} />
+          <span>Filters</span>
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {showFilterModal && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 20, stiffness: 100 }}
+            className="fixed inset-0 z-50 bg-white dark:bg-gray-900 lg:hidden"
+          >
+            <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+              <h2 className="text-xl font-semibold">Filters</h2>
+              <button
+                onClick={() => setShowFilterModal(false)}
+                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+                aria-label="Close Filters"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div className="overflow-y-auto h-[calc(100%-65px)]">
+              <FilterSidebar
+                filters={filters}
+                setFilters={setFilters}
+                onApplyFilters={() => setShowFilterModal(false)}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="container mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
+        {/* Filter Sidebar for large screens */}
+        <div className="hidden lg:block lg:w-1/4">
           <FilterSidebar filters={filters} setFilters={setFilters} />
         </div>
         
