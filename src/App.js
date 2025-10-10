@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter as Router } from 'react-router-dom';
+
 import './App.css';
 
 // Layout Components
@@ -8,6 +9,7 @@ import Footer from './components/layout/Footer';
 import Chatbot from './components/common/Chatbot';
 import ScrollToTop from './components/common/ScrollToTop';
 
+// Pages
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ProtectedRoute from './components/common/ProtectedRoute';
@@ -25,7 +27,7 @@ function App() {
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
-  // Handle dark mode toggle
+  // Handle dark mode, contrast, and language preferences
   useEffect(() => {
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
     const isHighContrast = localStorage.getItem('highContrast') === 'true';
@@ -35,41 +37,22 @@ function App() {
     setHighContrast(isHighContrast);
     setLanguage(savedLanguage);
     
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    
-    if (isHighContrast) {
-      document.documentElement.classList.add('high-contrast');
-    } else {
-      document.documentElement.classList.remove('high-contrast');
-    }
+    document.documentElement.classList.toggle('dark', isDarkMode);
+    document.documentElement.classList.toggle('high-contrast', isHighContrast);
   }, []);
 
   const toggleDarkMode = () => {
     const newDarkMode = !darkMode;
     setDarkMode(newDarkMode);
     localStorage.setItem('darkMode', newDarkMode);
-    
-    if (newDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    document.documentElement.classList.toggle('dark', newDarkMode);
   };
 
   const toggleHighContrast = () => {
     const newHighContrast = !highContrast;
     setHighContrast(newHighContrast);
     localStorage.setItem('highContrast', newHighContrast);
-    
-    if (newHighContrast) {
-      document.documentElement.classList.add('high-contrast');
-    } else {
-      document.documentElement.classList.remove('high-contrast');
-    }
+    document.documentElement.classList.toggle('high-contrast', newHighContrast);
   };
 
   const changeLanguage = (lang) => {
@@ -80,22 +63,15 @@ function App() {
   // Handle PWA install prompt
   useEffect(() => {
     window.addEventListener('beforeinstallprompt', (e) => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
       e.preventDefault();
-      // Stash the event so it can be triggered later
       setDeferredPrompt(e);
-      // Update UI to notify the user they can add to home screen
       setShowInstallPrompt(true);
     });
   }, []);
 
   const handleInstallClick = () => {
     if (!deferredPrompt) return;
-    
-    // Show the install prompt
     deferredPrompt.prompt();
-    
-    // Wait for the user to respond to the prompt
     deferredPrompt.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === 'accepted') {
         console.log('User accepted the install prompt');
@@ -108,41 +84,47 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header 
-        darkMode={darkMode} 
-        toggleDarkMode={toggleDarkMode}
-        highContrast={highContrast}
-        toggleHighContrast={toggleHighContrast}
-        language={language}
-        changeLanguage={changeLanguage}
-        showInstallPrompt={showInstallPrompt}
-        handleInstallClick={handleInstallClick}
-      />
-      <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/listings" element={<Listings />} />
-          <Route path="/property/:id" element={<PropertyDetails />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        <Header 
+          darkMode={darkMode} 
+          toggleDarkMode={toggleDarkMode}
+          highContrast={highContrast}
+          toggleHighContrast={toggleHighContrast}
+          language={language}
+          changeLanguage={changeLanguage}
+          showInstallPrompt={showInstallPrompt}
+          handleInstallClick={handleInstallClick}
+        />
 
-          {/* Protected User Routes */}
-          <Route element={<ProtectedRoute allowedRoles={['user', 'admin']} />}>
-            <Route path="/dashboard" element={<UserDashboard />} />
-          </Route>
+        <main className="flex-grow">
+          <Routes>
+            {/* 👇 Default route now shows Login first */}
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/listings" element={<Listings />} />
+            <Route path="/property/:id" element={<PropertyDetails />} />
+            <Route path="/signup" element={<Signup />} />
 
-          {/* Protected Admin Routes */}
-          <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
-            <Route path="/admin" element={<AdminDashboard />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-      <ScrollToTop />
-      <Chatbot />
-      <Footer />
-    </div>
+            {/* Protected User Routes */}
+            <Route element={<ProtectedRoute allowedRoles={['user', 'admin']} />}>
+              <Route path="/dashboard" element={<UserDashboard />} />
+            </Route>
+
+            {/* Protected Admin Routes */}
+            <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
+              <Route path="/admin" element={<AdminDashboard />} />
+            </Route>
+
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+
+        <ScrollToTop />
+        <Chatbot />
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
