@@ -163,6 +163,35 @@ export const properties = [
       lat: 16.4150,
       lng: 120.5930
     }
+  },
+
+  {
+    id: 7,
+    title: "Modern Studio Type Apartment",
+    image: "https://cdn.home-designing.com/wp-content/uploads/2014/06/white-modern-studio-design.jpeg",
+    price: 6500,
+    location: "Tabuk, Cordillera Administrative Region",
+    type: "2-Bedroom",
+    verified: true,
+    aiRecommended: true,
+    distance: "5 min to Lorem Ipsum",
+    rating: 4.6,
+    amenities: ["WiFi", "Kitchen", "Parking", "Security"],
+    description: "Modern 2-bedroom apartment right on Session Road. Walking distance to shops, restaurants, and public transport. Ideal for young professionals.",
+    blockchainData: {
+      verified: true,
+      hash: "0x9f8e7d6c5b4a3e2d1c0b9a8f7e6d5c4b3a283jnfge3",
+      timestamp: "2023-10-12T11:05:10Z",
+      verifiedBy: "Tabuk City Housing Department",
+      transactions: [
+        { id: "tx7", date: "2023-10-12", type: "Verification", blockNumber: 1523001, hash: "0x9f8e7d6c5b4a3e2d1c0b9a8f7e6d5c4b3a2e1d0" },
+        { id: "tx8", date: "2023-09-28", type: "Registration", blockNumber: 1519890, hash: "0x7d8f3e29b7e284f3e3b1f9c6b4d5a6c7b8a9f0e1d2c3b4a5" }
+      ]
+    },
+    coordinates: {
+      lat: 16.4150,
+      lng: 120.5930
+    }
   }
 ];
 
