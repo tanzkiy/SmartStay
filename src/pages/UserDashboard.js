@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User, Mail, Heart, Clock, Shield, Wallet, TrendingUp, Sparkles } from 'lucide-react';
+import { User, Mail, Heart, Clock, Shield, Wallet, Sparkles } from 'lucide-react';
 import { mockUserProfile, mockListings } from '../data/mockData';
 import PropertyCard from '../components/common/PropertyCard';
 
