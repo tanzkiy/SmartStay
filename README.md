@@ -123,7 +123,7 @@ To revolutionize the housing search experience by combining AI-powered recommend
 *Personal dashboard with wallet and recommendations*
 
 ### AI Chatbot
-![Chatbot](docs/screenshots/chatbot.png)
+![Chatbot](/docs/screenshots/chatbot.png)
 *Intelligent assistant for instant help*
 
 ---
