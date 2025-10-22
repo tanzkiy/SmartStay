@@ -1,5 +1,346 @@
 // Mock data for SmartStay Cordillera
 
+// SmartLease data
+export const smartLeases = [
+  {
+    id: 1,
+    propertyId: 1,
+    tenantId: 1,
+    landlordId: 1,
+    startDate: "2023-11-01",
+    endDate: "2024-10-31",
+    monthlyRent: 5000,
+    securityDeposit: 15000,
+    status: "active",
+    blockchainVerified: true,
+    blockchainHash: "0x7d8f3e29b7e284f3e3b1f9c6b4d5a6c7b8a9f0e1d2c3b4a5",
+    verificationDate: "2023-10-25T10:30:00Z",
+    terms: {
+      utilities: "included",
+      maintenance: "landlord_responsible",
+      pets: "not_allowed",
+      smoking: "not_allowed"
+    },
+    payments: [
+      { month: "2023-11", amount: 5000, status: "paid", date: "2023-11-01" },
+      { month: "2023-12", amount: 5000, status: "paid", date: "2023-12-01" },
+      { month: "2024-01", amount: 5000, status: "pending", date: null }
+    ]
+  },
+  {
+    id: 2,
+    propertyId: 2,
+    tenantId: 2,
+    landlordId: 2,
+    startDate: "2023-10-15",
+    endDate: "2024-10-14",
+    monthlyRent: 8000,
+    securityDeposit: 24000,
+    status: "active",
+    blockchainVerified: true,
+    blockchainHash: "0x3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+    verificationDate: "2023-10-10T14:45:00Z",
+    terms: {
+      utilities: "tenant_responsible",
+      maintenance: "shared",
+      pets: "allowed_with_deposit",
+      smoking: "designated_areas"
+    },
+    payments: [
+      { month: "2023-10", amount: 8000, status: "paid", date: "2023-10-15" },
+      { month: "2023-11", amount: 8000, status: "paid", date: "2023-11-15" },
+      { month: "2023-12", amount: 8000, status: "pending", date: null }
+    ]
+  },
+  {
+    id: 3,
+    propertyId: 4,
+    tenantId: 3,
+    landlordId: 3,
+    startDate: "2023-12-01",
+    endDate: "2024-11-30",
+    monthlyRent: 12000,
+    securityDeposit: 36000,
+    status: "pending_verification",
+    blockchainVerified: false,
+    blockchainHash: "",
+    verificationDate: null,
+    terms: {
+      utilities: "included",
+      maintenance: "landlord_responsible",
+      pets: "allowed",
+      smoking: "not_allowed"
+    },
+    payments: []
+  }
+];
+
+// Documents data
+export const documents = [
+  {
+    id: 1,
+    propertyId: 1,
+    landlordId: 1,
+    type: "business_permit",
+    fileName: "business_permit_ana_d.pdf",
+    uploadDate: "2023-09-15T08:30:00Z",
+    verified: true,
+    verifiedBy: "admin",
+    verifiedAt: "2023-09-16T10:15:00Z",
+    expiryDate: "2024-09-15",
+    status: "active"
+  },
+  {
+    id: 2,
+    propertyId: 1,
+    landlordId: 1,
+    type: "valid_id",
+    fileName: "valid_id_ana_d.pdf",
+    uploadDate: "2023-09-15T08:35:00Z",
+    verified: true,
+    verifiedBy: "admin",
+    verifiedAt: "2023-09-16T10:20:00Z",
+    expiryDate: "2028-09-15",
+    status: "active"
+  },
+  {
+    id: 3,
+    propertyId: 2,
+    landlordId: 2,
+    type: "business_permit",
+    fileName: "business_permit_mark_t.pdf",
+    uploadDate: "2023-08-20T14:20:00Z",
+    verified: true,
+    verifiedBy: "partner",
+    verifiedAt: "2023-08-25T09:30:00Z",
+    expiryDate: "2024-08-20",
+    status: "active"
+  },
+  {
+    id: 4,
+    propertyId: 3,
+    landlordId: 3,
+    type: "business_permit",
+    fileName: "business_permit_maria_l.pdf",
+    uploadDate: "2023-10-01T11:45:00Z",
+    verified: false,
+    verifiedBy: null,
+    verifiedAt: null,
+    expiryDate: "2024-10-01",
+    status: "pending_verification"
+  }
+];
+
+// Blockchain Records data
+export const blockchainRecords = [
+  {
+    id: 1,
+    propertyId: 1,
+    transactionType: "property_verification",
+    hash: "0x7d8f3e29b7e284f3e3b1f9c6b4d5a6c7b8a9f0e1d2c3b4a5",
+    blockNumber: 1523456,
+    timestamp: "2023-10-15T08:30:45Z",
+    verifiedBy: "City Housing Department",
+    status: "confirmed",
+    gasUsed: 21000,
+    network: "BlockVerify"
+  },
+  {
+    id: 2,
+    propertyId: 2,
+    transactionType: "property_verification",
+    hash: "0x3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+    blockNumber: 1522890,
+    timestamp: "2023-10-10T14:22:33Z",
+    verifiedBy: "City Housing Department",
+    status: "confirmed",
+    gasUsed: 21000,
+    network: "BlockVerify"
+  },
+  {
+    id: 3,
+    propertyId: 1,
+    transactionType: "lease_agreement",
+    hash: "0x1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3",
+    blockNumber: 1524000,
+    timestamp: "2023-10-25T10:30:00Z",
+    verifiedBy: "SmartStay Admin",
+    status: "confirmed",
+    gasUsed: 45000,
+    network: "BlockVerify"
+  },
+  {
+    id: 4,
+    propertyId: 4,
+    transactionType: "property_verification",
+    hash: "0x9f8e7d6c5b4a3e2d1c0b9a8f7e6d5c4b3a2e1d0",
+    blockNumber: 1523001,
+    timestamp: "2023-10-12T11:05:10Z",
+    verifiedBy: "City Housing Department",
+    status: "confirmed",
+    gasUsed: 21000,
+    network: "BlockVerify"
+  }
+];
+
+// InsightDash Analytics data
+export const insightDashData = {
+  overview: {
+    totalProperties: 10,
+    verifiedProperties: 7,
+    activeLeases: 2,
+    pendingVerifications: 3,
+    monthlyRevenue: 66000,
+    occupancyRate: 85.7
+  },
+  trends: {
+    propertyRegistrations: [
+      { month: "Aug 2023", count: 2 },
+      { month: "Sep 2023", count: 1 },
+      { month: "Oct 2023", count: 3 },
+      { month: "Nov 2023", count: 1 }
+    ],
+    verifications: [
+      { month: "Aug 2023", count: 2 },
+      { month: "Sep 2023", count: 1 },
+      { month: "Oct 2023", count: 2 },
+      { month: "Nov 2023", count: 0 }
+    ],
+    leaseSignings: [
+      { month: "Sep 2023", count: 1 },
+      { month: "Oct 2023", count: 1 },
+      { month: "Nov 2023", count: 1 },
+      { month: "Dec 2023", count: 0 }
+    ]
+  },
+  demographics: {
+    propertyTypes: {
+      "Studio": 2,
+      "1-Bedroom": 3,
+      "2-Bedroom": 2,
+      "3-Bedroom": 1,
+      "Dormitory": 1,
+      "Boarding House": 1
+    },
+    priceRanges: {
+      "Under ₱5,000": 3,
+      "₱5,000 - ₱8,000": 3,
+      "₱8,000 - ₱12,000": 1,
+      "Over ₱12,000": 3
+    },
+    locations: {
+      "Burnham Park Area": 1,
+      "Session Road": 1,
+      "Camp John Hay": 1,
+      "Mines View Park": 1,
+      "Sagada": 1,
+      "Banaue": 1,
+      "Tabuk": 1
+    }
+  },
+  performance: {
+    averageVerificationTime: "3.2 days",
+    landlordSatisfaction: 4.6,
+    tenantSatisfaction: 4.4,
+    blockchainUptime: 99.9
+  }
+};
+
+// Notifications data
+export const notifications = [
+  {
+    id: 1,
+    userId: 1,
+    role: "admin",
+    type: "property_submitted",
+    title: "New Property Submitted",
+    message: "Ana D. has submitted a new property for verification: 'Cozy Studio near SLU'",
+    timestamp: "2023-10-15T08:30:00Z",
+    read: false,
+    priority: "high",
+    actionRequired: true,
+    relatedId: 1
+  },
+  {
+    id: 2,
+    userId: 1,
+    role: "admin",
+    type: "verification_completed",
+    title: "Property Verified",
+    message: "Property 'Mountain View Apartment' has been verified by LGU Partner",
+    timestamp: "2023-10-10T14:45:00Z",
+    read: true,
+    priority: "medium",
+    actionRequired: false,
+    relatedId: 2
+  },
+  {
+    id: 3,
+    userId: 2,
+    role: "partner",
+    type: "verification_request",
+    title: "Verification Request",
+    message: "New property verification request from Admin: 'UP Cordillera Student Dormitory'",
+    timestamp: "2023-10-01T11:45:00Z",
+    read: false,
+    priority: "high",
+    actionRequired: true,
+    relatedId: 3
+  },
+  {
+    id: 4,
+    userId: 3,
+    role: "landlord",
+    type: "property_approved",
+    title: "Property Approved",
+    message: "Your property 'Luxury Condo with City View' has been approved and is now live!",
+    timestamp: "2023-10-05T09:15:20Z",
+    read: true,
+    priority: "high",
+    actionRequired: false,
+    relatedId: 4
+  },
+  {
+    id: 5,
+    userId: 3,
+    role: "landlord",
+    type: "verification_rejected",
+    title: "Document Verification Failed",
+    message: "Your business permit for 'Traditional Cordillera Boarding House' was rejected. Please upload a valid document.",
+    timestamp: "2023-09-28T16:20:00Z",
+    read: false,
+    priority: "high",
+    actionRequired: true,
+    relatedId: 5
+  },
+  {
+    id: 6,
+    userId: 4,
+    role: "renter",
+    type: "lease_signed",
+    title: "Lease Agreement Signed",
+    message: "Your lease for 'Cozy Studio near SLU' has been signed and blockchain verified!",
+    timestamp: "2023-10-25T10:30:00Z",
+    read: false,
+    priority: "high",
+    actionRequired: false,
+    relatedId: 1
+  },
+  {
+    id: 7,
+    userId: 4,
+    role: "renter",
+    type: "payment_due",
+    title: "Rent Payment Due",
+    message: "Your rent payment of ₱5,000 for January 2024 is due in 3 days.",
+    timestamp: "2023-12-28T09:00:00Z",
+    read: false,
+    priority: "medium",
+    actionRequired: true,
+    relatedId: 1
+  }
+];
+
 // Properties data
 export const properties = [
   {
@@ -167,30 +508,114 @@ export const properties = [
 
   {
     id: 7,
-    title: "Modern Studio Type Apartment",
+    title: "Mountain Retreat in Sagada",
     image: "https://cdn.home-designing.com/wp-content/uploads/2014/06/white-modern-studio-design.jpeg",
     price: 6500,
-    location: "Tabuk, Cordillera Administrative Region",
+    location: "Sagada, Mountain Province",
     type: "2-Bedroom",
     verified: true,
     aiRecommended: true,
-    distance: "5 min to Lorem Ipsum",
+    distance: "5 min to Sagada Town Center",
     rating: 4.6,
     amenities: ["WiFi", "Kitchen", "Parking", "Security"],
-    description: "Modern 2-bedroom apartment right on Session Road. Walking distance to shops, restaurants, and public transport. Ideal for young professionals.",
+    description: "Modern 2-bedroom apartment in the heart of Sagada. Experience the cool mountain climate while enjoying modern amenities. Perfect for nature lovers and adventurers.",
     blockchainData: {
       verified: true,
       hash: "0x9f8e7d6c5b4a3e2d1c0b9a8f7e6d5c4b3a283jnfge3",
       timestamp: "2023-10-12T11:05:10Z",
-      verifiedBy: "Tabuk City Housing Department",
+      verifiedBy: "Sagada LGU",
       transactions: [
         { id: "tx7", date: "2023-10-12", type: "Verification", blockNumber: 1523001, hash: "0x9f8e7d6c5b4a3e2d1c0b9a8f7e6d5c4b3a2e1d0" },
         { id: "tx8", date: "2023-09-28", type: "Registration", blockNumber: 1519890, hash: "0x7d8f3e29b7e284f3e3b1f9c6b4d5a6c7b8a9f0e1d2c3b4a5" }
       ]
     },
     coordinates: {
-      lat: 16.4150,
-      lng: 120.5930
+      lat: 17.0833,
+      lng: 120.9000
+    }
+  },
+  {
+    id: 8,
+    title: "Banaue Rice Terraces View Lodge",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+    price: 5500,
+    location: "Banaue, Ifugao",
+    type: "1-Bedroom",
+    verified: true,
+    aiRecommended: true,
+    distance: "2 min to Rice Terraces",
+    rating: 4.7,
+    amenities: ["WiFi", "Mountain View", "Traditional Architecture", "Cultural Tours"],
+    description: "Stay in a lodge overlooking the UNESCO World Heritage Banaue Rice Terraces. Experience traditional Ifugao culture while enjoying modern comforts.",
+    blockchainData: {
+      verified: true,
+      hash: "0x8e7d6c5b4a3e2d1c0b9a8f7e6d5c4b3a2e1d0c9b8a7f6",
+      timestamp: "2023-10-08T09:30:15Z",
+      verifiedBy: "Banaue LGU",
+      transactions: [
+        { id: "tx9", date: "2023-10-08", type: "Verification", blockNumber: 1522500, hash: "0x8e7d6c5b4a3e2d1c0b9a8f7e6d5c4b3a2e1d0c9b8a7f6" },
+        { id: "tx10", date: "2023-09-22", type: "Registration", blockNumber: 1519200, hash: "0x6e5d4c3b2a1e0d9c8b7a6f5e4d3c2b1a0e9d8c7b6a5" }
+      ]
+    },
+    coordinates: {
+      lat: 16.9167,
+      lng: 121.0667
+    }
+  },
+  {
+    id: 9,
+    title: "Strawberry Farm Cottage",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+    price: 4800,
+    location: "La Trinidad, Benguet",
+    type: "Studio",
+    verified: true,
+    aiRecommended: false,
+    distance: "3 min to Strawberry Farms",
+    rating: 4.3,
+    amenities: ["WiFi", "Garden", "Fresh Produce", "Mountain Views"],
+    description: "Charming cottage near the famous strawberry farms of La Trinidad. Pick your own strawberries and enjoy the cool mountain air.",
+    blockchainData: {
+      verified: true,
+      hash: "0x7f6e5d4c3b2a1e0d9c8b7a6f5e4d3c2b1a0e9d8c7b6",
+      timestamp: "2023-10-20T11:45:30Z",
+      verifiedBy: "La Trinidad LGU",
+      transactions: [
+        { id: "tx11", date: "2023-10-20", type: "Verification", blockNumber: 1523800, hash: "0x7f6e5d4c3b2a1e0d9c8b7a6f5e4d3c2b1a0e9d8c7b6" },
+        { id: "tx12", date: "2023-10-05", type: "Registration", blockNumber: 1521100, hash: "0x5e4d3c2b1a0e9d8c7b6a5f4e3d2c1b0a9e8d7c6b5a4" }
+      ]
+    },
+    coordinates: {
+      lat: 16.4500,
+      lng: 120.5833
+    }
+  },
+  {
+    id: 10,
+    title: "Camp John Hay Resort Villa",
+    image: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+    price: 15000,
+    location: "Camp John Hay, Baguio City",
+    type: "3-Bedroom",
+    verified: true,
+    aiRecommended: true,
+    distance: "On-site at Camp John Hay",
+    rating: 4.9,
+    amenities: ["WiFi", "Pool", "Golf Course", "Fine Dining", "Spa"],
+    description: "Luxurious villa at the prestigious Camp John Hay resort. Enjoy world-class amenities, golf, and the cool Baguio climate.",
+    blockchainData: {
+      verified: true,
+      hash: "0x6f5e4d3c2b1a0e9d8c7b6a5f4e3d2c1b0a9e8d7c6b5",
+      timestamp: "2023-10-18T14:20:45Z",
+      verifiedBy: "Baguio City LGU",
+      transactions: [
+        { id: "tx13", date: "2023-10-18", type: "Verification", blockNumber: 1523600, hash: "0x6f5e4d3c2b1a0e9d8c7b6a5f4e3d2c1b0a9e8d7c6b5" },
+        { id: "tx14", date: "2023-10-01", type: "Registration", blockNumber: 1520500, hash: "0x4e3d2c1b0a9e8d7c6b5a4f3e2d1c0b9a8e7d6c5b4a3" }
+      ]
+    },
+    coordinates: {
+      lat: 16.3900,
+      lng: 120.6100
     }
   }
 ];
@@ -202,7 +627,7 @@ export const landmarks = [
     location: "Jose Abad Santos Dr, Cordillera Administrative Region",
     type: "Park",
     description: "A historic urban park in the heart of Cordillera Administrative Region, famous for its man-made lake, boating, and recreational activities.",
-    image: "https://images.unsplash.com/photo-1595877244574-e90ce41a1adb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Ym9hcmRpbmclMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
     coordinates: {
       lat: 16.4000,
       lng: 120.5900
@@ -214,7 +639,7 @@ export const landmarks = [
     location: "Mines View, Cordillera Administrative Region",
     type: "Park",
     description: "Offers a stunning panoramic view of the Cordillera mountains and the mining town of Itogon. A popular tourist destination in Cordillera.",
-    image: "https://images.unsplash.com/photo-1595877244574-e90ce41a1adb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Ym9hcmRpbmclMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
     coordinates: {
       lat: 16.4200,
       lng: 120.6200
@@ -226,7 +651,7 @@ export const landmarks = [
     location: "Romulo Dr, Cordillera Administrative Region",
     type: "Historical Landmark",
     description: "The official summer residence of the President of the Philippines, featuring a grand main gate and well-maintained gardens.",
-    image: "https://images.unsplash.com/photo-1595877244574-e90ce41a1adb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Ym9hcmRpbmclMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNvbmRvfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
     coordinates: {
       lat: 16.4100,
       lng: 120.6100
@@ -238,7 +663,7 @@ export const landmarks = [
     location: "Ordonio Dr, Cordillera Administrative Region",
     type: "Recreational Area",
     description: "A former American military recreation facility, now a popular resort complex with hotels, restaurants, and recreational activities in Cordillera.",
-    image: "https://images.unsplash.com/photo-1595877244574-e90ce41a1adb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Ym9hcmRpbmclMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    image: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
     coordinates: {
       lat: 16.3900,
       lng: 120.6100
@@ -305,11 +730,22 @@ export const schools = [
 
 ];
 
-export const mockListings = properties;
+export const mockListings = properties.map(property => ({
+  ...property,
+  status: property.verified ? 'verified' : property.id % 3 === 0 ? 'sent_to_lgu' : property.id % 4 === 0 ? 'rejected' : 'pending',
+  submittedOn: property.blockchainData?.timestamp ? new Date(property.blockchainData.timestamp).toISOString().split('T')[0] : '2023-10-15',
+  owner: property.id === 1 ? 'Ana D.' : property.id === 2 ? 'Mark T.' : property.id === 3 ? 'Maria L.' : property.id === 4 ? 'Carlos R.' : property.id === 5 ? 'Elena S.' : property.id === 6 ? 'Roberto M.' : 'Unknown Owner',
+  lguVerified: property.verified,
+  blockchainVerified: property.verified,
+  lguVerifiedBy: property.verified ? 'Baguio City LGU' : null,
+  lguVerifiedAt: property.verified ? new Date(property.blockchainData?.timestamp || '2023-10-15').toISOString() : null
+}));
 
 export const mockUsers = [
   { email: "admin@example.com", password: "adminpass", role: "admin" },
-  { email: "user@example.com", password: "userpass", role: "user" },
+  { email: "partner@example.com", password: "partnerpass", role: "partner" },
+  { email: "landlord@example.com", password: "landlordpass", role: "landlord" },
+  { email: "renter@example.com", password: "renterpass", role: "renter" },
 ];
 
 export const mockAdminData = {
@@ -331,6 +767,16 @@ export const mockUserProfile = {
   applicationHistory: [
     { id: 101, listingId: 2, status: "pending", date: "2023-10-20" },
   ],
+};
+
+export const mockLandlordProfile = {
+  id: 1,
+  name: "Ana D.",
+  email: "landlord@example.com",
+  properties: [1, 2, 3], // Property IDs owned by this landlord
+  verificationStatus: "verified",
+  businessPermit: "BP-2023-001",
+  validId: "ID-123456789"
 };
 
  

@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Search, MapPin, Home as HomeIcon, DollarSign, Sparkles, Star, Lightbulb } from 'lucide-react';
+import { Search, MapPin, Home as HomeIcon, DollarSign, Star, Lightbulb } from 'lucide-react';
 import PropertyCard from '../components/common/PropertyCard';
 import { mockListings } from '../data/mockData';
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" },
+  viewport: { once: true, amount: 0.3 }
+};
 
 const Home = () => {
   const [location, setLocation] = useState('');
@@ -28,19 +35,34 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white">
       {/* Hero Section */}
-      <motion.section 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+      <motion.section
+        {...fadeInUp}
         className="relative h-[60vh] flex items-center justify-center text-white p-4 overflow-hidden"
         style={{ backgroundImage: 'url(\'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwzNXx8cmVhbCUyMGVzdGF0ZXxlbnwwfDB8fHwxNzE1Njc2NjQyfDA&ixlib=rb-4.0.3&q=80&w=1080\')', backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
         <div className="text-center z-10">
-          <h1 className="text-5xl font-bold mb-4">Find Your Perfect Stay</h1>
-          <p className="text-xl mb-8">Discover homes, apartments, and dorms for rent.</p>
-          
+          <motion.h1
+            {...fadeInUp}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-5xl font-bold mb-4"
+          >
+            Find Your Perfect Stay
+          </motion.h1>
+          <motion.p
+            {...fadeInUp}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-xl mb-8"
+          >
+            Discover homes, apartments, and dorms for rent.
+          </motion.p>
+
           {/* Search Bar */}
-          <form onSubmit={handleSearch} className="bg-white dark:bg-gray-800 rounded-2xl md:rounded-full shadow-lg max-w-3xl mx-auto p-3 md:p-2">
+          <motion.form
+            {...fadeInUp}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            onSubmit={handleSearch}
+            className="bg-white dark:bg-gray-800 rounded-2xl md:rounded-full shadow-lg max-w-3xl mx-auto p-3 md:p-2"
+          >
             <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_auto] gap-2 md:gap-0 items-stretch">
               <div className="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 dark:border-gray-700 md:border-0 md:rounded-full">
                 <MapPin className="text-gray-400 shrink-0" />
@@ -91,45 +113,83 @@ const Home = () => {
                 <span className="font-medium md:hidden">Search</span>
               </button>
             </div>
-          </form>
+          </motion.form>
         </div>
         <div className="absolute inset-0 bg-black opacity-30"></div>
       </motion.section>
 
       {/* Featured Listings */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="flex items-center justify-center gap-2 mb-8">
+      <motion.section
+        {...fadeInUp}
+        className="container mx-auto px-4 py-12"
+      >
+        <motion.div
+          {...fadeInUp}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex items-center justify-center gap-2 mb-8"
+        >
           <Star className="h-6 w-6 text-mountain-green" />
           <h2 className="text-3xl font-bold text-center">Featured Properties</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredListings.map(property => (
-            <PropertyCard key={property.id} property={property} />
+        </motion.div>
+        <motion.div
+          {...fadeInUp}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {featuredListings.map((property, index) => (
+            <motion.div
+              key={property.id}
+              {...fadeInUp}
+              transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+            >
+              <PropertyCard property={property} />
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* AI Smart Suggestions */}
-      <section className="bg-white dark:bg-gray-900 py-12">
+      <motion.section
+        {...fadeInUp}
+        className="bg-white dark:bg-gray-900 py-12"
+      >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center gap-2 mb-8">
+          <motion.div
+            {...fadeInUp}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center justify-center gap-2 mb-8"
+          >
             <Lightbulb className="h-6 w-6 text-mountain-green" />
             <h2 className="text-3xl font-bold text-center">AI Smart Suggestions</h2>
-          </div>
+          </motion.div>
           {recommendedListings.length > 0 ? (
-            <div className="flex gap-6 overflow-x-auto pr-4 pb-0">
-              {recommendedListings.map(property => (
-                <div key={property.id} className="min-w-[260px] p-2">
+            <motion.div
+              {...fadeInUp}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex gap-6 overflow-x-auto pr-4 pb-0"
+            >
+              {recommendedListings.map((property, index) => (
+                <motion.div
+                  key={property.id}
+                  {...fadeInUp}
+                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                  className="min-w-[260px] p-2"
+                >
                   <PropertyCard property={property} />
-                </div>
+                </motion.div>
               ))}
-            </div>
-
+            </motion.div>
           ) : (
-            <p className="text-center text-gray-600 dark:text-gray-300">No recommendations available right now.</p>
+            <motion.p
+              {...fadeInUp}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-center text-gray-600 dark:text-gray-300"
+            >
+              No recommendations available right now.
+            </motion.p>
           )}
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };

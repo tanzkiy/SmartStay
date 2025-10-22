@@ -20,10 +20,18 @@ const Login = () => {
       localStorage.setItem('userRole', 'admin');
       window.dispatchEvent(new Event('userRoleChanged'));
       navigate('/admin');
-    } else if (email === 'user@example.com' && password === 'userpass') {
-      localStorage.setItem('userRole', 'user');
+    } else if (email === 'partner@example.com' && password === 'partnerpass') {
+      localStorage.setItem('userRole', 'partner');
       window.dispatchEvent(new Event('userRoleChanged'));
-      navigate('/dashboard');
+      navigate('/partner');
+    } else if (email === 'landlord@example.com' && password === 'landlordpass') {
+      localStorage.setItem('userRole', 'landlord');
+      window.dispatchEvent(new Event('userRoleChanged'));
+      navigate('/landlord');
+    } else if (email === 'renter@example.com' && password === 'renterpass') {
+      localStorage.setItem('userRole', 'renter');
+      window.dispatchEvent(new Event('userRoleChanged'));
+      navigate('/renter');
     } else {
       setError('Invalid email or password');
     }

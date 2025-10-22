@@ -22,6 +22,16 @@ const Header = ({ darkMode, toggleDarkMode, highContrast, toggleHighContrast, la
     };
   }, []);
 
+  // const getRoleDisplayName = (role) => {
+  //   switch (role) {
+  //     case 'admin': return 'SmartStay Admin';
+  //     case 'partner': return 'LGU Partner';
+  //     case 'landlord': return 'Landlord';
+  //     case 'renter': return 'Renter';
+  //     default: return 'User';
+  //   }
+  // };
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const handleLogout = () => {
@@ -54,11 +64,17 @@ const Header = ({ darkMode, toggleDarkMode, highContrast, toggleHighContrast, la
           <nav className="hidden md:flex items-center gap-6">
             <NavLink to="/" className={navLinkClass} end>Home</NavLink>
             <NavLink to="/listings" className={navLinkClass}>Listings</NavLink>
-            {userRole === 'user' && (
-              <NavLink to="/dashboard" className={navLinkClass}>Dashboard</NavLink>
+            {userRole === 'renter' && (
+              <NavLink to="/renter" className={navLinkClass}>Dashboard</NavLink>
             )}
             {userRole === 'admin' && (
               <NavLink to="/admin" className={navLinkClass}>Admin</NavLink>
+            )}
+            {userRole === 'partner' && (
+              <NavLink to="/partner" className={navLinkClass}>Partner</NavLink>
+            )}
+            {userRole === 'landlord' && (
+              <NavLink to="/landlord" className={navLinkClass}>Landlord</NavLink>
             )}
             {!userRole && (
               <NavLink to="/login" className={navLinkClass}>Login</NavLink>
@@ -170,9 +186,9 @@ const Header = ({ darkMode, toggleDarkMode, highContrast, toggleHighContrast, la
             >
               Listings
             </NavLink>
-            {userRole === 'user' && (
+            {userRole === 'renter' && (
               <NavLink
-                to="/dashboard"
+                to="/renter"
                 className={({ isActive }) => [
                   'block py-2 px-4 rounded-lg transition-colors',
                   isActive
@@ -196,6 +212,34 @@ const Header = ({ darkMode, toggleDarkMode, highContrast, toggleHighContrast, la
                 onClick={() => setIsMenuOpen(false)}
               >
                 Admin
+              </NavLink>
+            )}
+            {userRole === 'partner' && (
+              <NavLink
+                to="/partner"
+                className={({ isActive }) => [
+                  'block py-2 px-4 rounded-lg transition-colors',
+                  isActive
+                    ? 'bg-mountain-green/10 text-mountain-green dark:text-mountain-green-light'
+                    : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'
+                ].join(' ')}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Partner
+              </NavLink>
+            )}
+            {userRole === 'landlord' && (
+              <NavLink
+                to="/landlord"
+                className={({ isActive }) => [
+                  'block py-2 px-4 rounded-lg transition-colors',
+                  isActive
+                    ? 'bg-mountain-green/10 text-mountain-green dark:text-mountain-green-light'
+                    : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'
+                ].join(' ')}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Landlord
               </NavLink>
             )}
             {!userRole && (

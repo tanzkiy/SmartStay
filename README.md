@@ -107,19 +107,19 @@ To revolutionize the housing search experience by combining AI-powered recommend
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page](docs/screenshots/home.png)
+![Home Page](/docs/screenshots/home.png)
 *Hero section with smart search and featured properties*
 
 ### Listings Page
-![Listings](docs/screenshots/listings.png)
+![Listings](/docs/screenshots/listings.png)
 *Browse properties with advanced filters and sorting*
 
 ### Property Details
-![Property Details](docs/screenshots/property-details.png)
+![Property Details](/docs/screenshots/property-details.png)
 *Comprehensive property information with blockchain verification*
 
 ### User Dashboard
-![Dashboard](docs/screenshots/dashboard.png)
+![Dashboard](/docs/screenshots/dashboard.png)
 *Personal dashboard with wallet and recommendations*
 
 ### AI Chatbot

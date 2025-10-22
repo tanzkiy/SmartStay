@@ -17,6 +17,8 @@ import Listings from './pages/Listings';
 import PropertyDetails from './pages/PropertyDetails';
 import UserDashboard from './pages/UserDashboard';
 import AdminDashboard from './pages/AdminDashboard';
+import LandlordDashboard from './pages/LandlordDashboard';
+import PartnerDashboard from './pages/PartnerDashboard';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -128,14 +130,24 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
 
-          {/* Protected User Routes */}
-          <Route element={<ProtectedRoute allowedRoles={['user', 'admin']} />}>
-            <Route path="/dashboard" element={<UserDashboard />} />
-          </Route>
-
           {/* Protected Admin Routes */}
           <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
             <Route path="/admin" element={<AdminDashboard />} />
+          </Route>
+
+          {/* Protected Partner Routes */}
+          <Route element={<ProtectedRoute allowedRoles={['partner']} />}>
+            <Route path="/partner" element={<PartnerDashboard />} />
+          </Route>
+
+          {/* Protected Landlord Routes */}
+          <Route element={<ProtectedRoute allowedRoles={['landlord']} />}>
+            <Route path="/landlord" element={<LandlordDashboard />} />
+          </Route>
+
+          {/* Protected Renter Routes */}
+          <Route element={<ProtectedRoute allowedRoles={['renter']} />}>
+            <Route path="/renter" element={<UserDashboard />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
