@@ -244,59 +244,7 @@ Comprehensive documentation is available in the `/docs` directory:
 
 ---
 
-## 📁 Project Structure
 
-```
-smartstay-cordillera/
-├── public/                      # Static files
-│   ├── index.html              # HTML template
-│   ├── manifest.json           # PWA manifest
-│   └── icons/                  # App icons
-│
-├── src/                        # Source code
-│   ├── components/             # React components
-│   │   ├── common/            # Reusable components
-│   │   │   ├── PropertyCard.js
-│   │   │   ├── Chatbot.js
-│   │   │   └── ScrollToTop.js
-│   │   ├── layout/            # Layout components
-│   │   │   ├── Header.js
-│   │   │   └── Footer.js
-│   │   ├── property/          # Property-specific
-│   │   │   ├── ImageCarousel.js
-│   │   │   └── BlockchainVerification.js
-│   │   └── listings/          # Listing components
-│   │       └── FilterSidebar.js
-│   │
-│   ├── pages/                 # Page components
-│   │   ├── Home.js
-│   │   ├── Listings.js
-│   │   ├── PropertyDetails.js
-│   │   ├── UserDashboard.js
-│   │   ├── AdminDashboard.js
-│   │   └── NotFound.js
-│   │
-│   ├── data/                  # Data layer
-│   │   └── mockData.js        # Mock database
-│   │
-│   ├── App.js                 # Root component
-│   ├── index.js               # Entry point
-│   ├── index.css              # Global styles
-│   └── service-worker.js      # PWA service worker
-│
-├── docs/                      # Documentation
-│   ├── USER_MANUAL.md
-│   ├── SYSTEM_DOCUMENTATION.md
-│   ├── DEVELOPER_GUIDE.md
-│   └── QUICK_REFERENCE.md
-│
-├── .gitignore                 # Git ignore rules
-├── package.json               # Dependencies
-├── tailwind.config.js         # Tailwind configuration
-└── README.md                  # This file
-```
-
----
 
 ## 💻 Development
 
@@ -375,17 +323,6 @@ firebase deploy
 - Upload `/build` directory to server
 - Configure server for SPA routing
 
-### Environment Variables
-
-Create `.env.production` file:
-
-```env
-REACT_APP_API_URL=https://api.smartstay-cordillera.com
-REACT_APP_BLOCKCHAIN_NETWORK=mainnet
-REACT_APP_GOOGLE_MAPS_KEY=your_key_here
-```
-
----
 
 ## 🤝 Contributing
 
@@ -568,11 +505,8 @@ SOFTWARE.
 ## 👥 Team
 
 ### Development Team
-- **Project Lead** - [Name]
-- **Frontend Developer** - [Name]
-- **Backend Developer** - [Name]
-- **UI/UX Designer** - [Name]
-- **QA Engineer** - [Name]
+- **Project Lead** - [Tristan Serafino]
+
 
 ### Government Partners
 - **City Government of Baguio**
